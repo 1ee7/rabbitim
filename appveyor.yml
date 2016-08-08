@@ -1,33 +1,34 @@
 environment:
   matrix:
-
-  - BUILD_TARGET: windows_msvc
-    GENERATORS: "Visual Studio 14 2015"
-    toolchain_version: 14
-    QT_VERSION: qt5.7
-    QT_ROOT: /C/Qt/5.7/msvc2015
-    AUTOBUILD_ARCH: x86
-    RABBITIM_BUILD_THIRDLIBRARY: qxmpp qzxing rabbitim
-    DOWNLOAD_FILE: https://sourceforge.net/projects/rabbitim-third-library/files/release/ThirdLibrary/RabbitIm_windows_msvc14_x86__v1.0.730.zip/download
+  
+  #- BUILD_TARGET: windows_msvc
+  #  GENERATORS: "Visual Studio 14 2015"
+  #  toolchain_version: 14
+  #  QT_VERSION: qt5.7
+  #  QT_ROOT: /C/Qt/5.7/msvc2015
+  #  AUTOBUILD_ARCH: x86
+  #  RABBITIM_BUILD_THIRDLIBRARY: qxmpp qzxing rabbitim
+  #  DOWNLOAD_FILE: https://sourceforge.net/projects/rabbitim-third-library/files/release/ThirdLibrary/RabbitIm_windows_msvc14_x86__v1.0.730.zip/download
+ 
   ##### 基本库编译 #####
-  - BUILD_TARGET: windows_msvc
-    GENERATORS: "Visual Studio 14 2015"
-    toolchain_version: 14
-    AUTOBUILD_ARCH: x86
-    RABBITIM_BUILD_THIRDLIBRARY: openssl libcurl libvpx libyuv x264 ffmpeg
-    RABBITIM_USE_REPOSITORIES: "FALSE"
+  #- BUILD_TARGET: windows_msvc
+  #  GENERATORS: "Visual Studio 14 2015"
+  #  toolchain_version: 14
+  #  AUTOBUILD_ARCH: x86
+  #  RABBITIM_BUILD_THIRDLIBRARY: openssl libcurl libvpx libyuv x264 ffmpeg
+  #  RABBITIM_USE_REPOSITORIES: "FALSE"
     
-  - BUILD_TARGET: windows_msvc
-    GENERATORS: "Visual Studio 12 2013"
-    toolchain_version: 12
-    AUTOBUILD_ARCH: x86
-    RABBITIM_BUILD_THIRDLIBRARY: openssl libcurl libvpx libyuv x264 ffmpeg
+  #- BUILD_TARGET: windows_msvc
+  #  GENERATORS: "Visual Studio 12 2013"
+  #  toolchain_version: 12
+  #  AUTOBUILD_ARCH: x86
+  #  RABBITIM_BUILD_THIRDLIBRARY: openssl libcurl libvpx libyuv x264 ffmpeg
   
   - BUILD_TARGET: windows_mingw
     toolchain_version: 530
     AUTOBUILD_ARCH: x86
     RABBITIM_BUILD_THIRDLIBRARY: change_prefix openssl libcurl libvpx libyuv x264 ffmpeg qrencode
-
+    
   - BUILD_TARGET: windows_mingw
     toolchain_version: 492
     AUTOBUILD_ARCH: x86
@@ -45,6 +46,7 @@ environment:
     AUTOBUILD_ARCH: x86
     RABBITIM_BUILD_THIRDLIBRARY: change_prefix openssl libcurl libvpx libyuv x264 ffmpeg qrencode
     RABBITIM_USE_REPOSITORIES: "FALSE"
+    
   ##### 基本库编译 #####
   
   ##### QT相关编译 #####
@@ -151,7 +153,7 @@ environment:
     RABBITIM_BUILD_THIRDLIBRARY: qxmpp qzxing rabbitim
     DOWNLOAD_FILE: https://sourceforge.net/projects/rabbitim-third-library/files/release/ThirdLibrary/RabbitIm_windows_mingw491_x86__v$(appveyor_build_version).zip/download
     RABBITIM_USE_REPOSITORIES: "FALSE"
-    
+
   - BUILD_TARGET: windows_mingw
     toolchain_version: 482
     QT_VERSION: qt5.3

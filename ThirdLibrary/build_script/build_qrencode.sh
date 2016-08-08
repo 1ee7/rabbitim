@@ -41,21 +41,21 @@ CUR_DIR=`pwd`
 #下载源码:
 if [ ! -d ${RABBITIM_BUILD_SOURCE_CODE} ]; then
     VERSION=3.4.3
-    if [ "TRUE" = "${RABBITIM_USE_REPOSITORIES}" ]; then
+    #if [ "TRUE" = "${RABBITIM_USE_REPOSITORIES}" ]; then
         echo "git clone -q --branch=v$VERSION https://github.com/fukuchi/libqrencode.git ${RABBITIM_BUILD_SOURCE_CODE}"
         git clone -q  https://github.com/fukuchi/libqrencode.git ${RABBITIM_BUILD_SOURCE_CODE}
-    else
-        echo "wget -q https://github.com/fukuchi/libqrencode/archive/v${VERSION}.tar.gz"
-        mkdir -p ${RABBITIM_BUILD_SOURCE_CODE}
-        cd ${RABBITIM_BUILD_SOURCE_CODE}
-        wget -q -c http://fukuchi.org/works/qrencode/qrencode-3.4.4.tar.gz
-        tar xf qrencode-3.4.4.tar.gz
-        mv qrencode-3.4.4  ..
-        rm -fr *
-        cd ..
-        rm -fr ${RABBITIM_BUILD_SOURCE_CODE}
-        mv -f qrencode-3.4.4 ${RABBITIM_BUILD_SOURCE_CODE}
-   fi
+    #else
+    #    echo "wget -q https://github.com/fukuchi/libqrencode/archive/v${VERSION}.tar.gz"
+    #    mkdir -p ${RABBITIM_BUILD_SOURCE_CODE}
+    #    cd ${RABBITIM_BUILD_SOURCE_CODE}
+    #    wget -q -c http://fukuchi.org/works/qrencode/qrencode-3.4.4.tar.gz
+    #    tar xf qrencode-3.4.4.tar.gz
+    #    mv qrencode-3.4.4  ..
+    #    rm -fr *
+    #    cd ..
+    #    rm -fr ${RABBITIM_BUILD_SOURCE_CODE}
+    #    mv -f qrencode-3.4.4 ${RABBITIM_BUILD_SOURCE_CODE}
+    #fi
 fi
 
 cd ${RABBITIM_BUILD_SOURCE_CODE}
@@ -130,17 +130,8 @@ case ${RABBITIM_BUILD_TARGERT} in
         exit 0
         ;;
     windows_mingw)
-        case `uname -s` in
-            Linux*|Unix*|CYGWIN*)
-                CONFIG_PARA="${CONFIG_PARA} CC=${RABBITIM_BUILD_CROSS_PREFIX}gcc --host=${RABBITIM_BUILD_CROSS_HOST} "
-                CONFIG_PARA="${CONFIG_PARA} --with-gnu-ld"
-                ;;
-            MINGW* | MSYS*)
-                CONFIG_PARA="${CONFIG_PARA} --host=$RABBITIM_BUILD_CROSS_HOST"
-                ;;
-            *)
-            ;;
-        esac
+        CONFIG_PARA="${CONFIG_PARA} CC=${RABBITIM_BUILD_CROSS_PREFIX}gcc --host=${RABBITIM_BUILD_CROSS_HOST} "
+        CONFIG_PARA="${CONFIG_PARA} --with-gnu-ld"
         ;;
     *)
         echo "${HELP_STRING}"

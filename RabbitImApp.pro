@@ -82,13 +82,13 @@ win32 : equals(QMAKE_HOST.os, Windows){
 
     #安装第三方依赖库  
     Deployment_third_lib.target = Deployment_third_lib
-    Deployment_third_lib.files = $${THIRD_LIBRARY_PATH}/lib/*.dll
-    Deployment_third_lib.path = $$PREFIX
+    Deployment_third_lib.files = $$system_path($${THIRD_LIBRARY_PATH}/lib/*.dll)
+    Deployment_third_lib.path = $$system_path($$PREFIX)
     Deployment_third_lib.CONFIG += directory no_check_exist
 
     Deployment_third_bin.target = Deployment_third_bin
-    Deployment_third_bin.files = $${THIRD_LIBRARY_PATH}/bin/*.dll
-    Deployment_third_bin.path = $$PREFIX
+    Deployment_third_bin.files = $$system_path($${THIRD_LIBRARY_PATH}/bin/*.dll)
+    Deployment_third_bin.path = $$system_path($$PREFIX)
     Deployment_third_bin.CONFIG += directory no_check_exist
     INSTALLS += Deployment_qtlib Deployment_third_lib Deployment_third_bin
     #QMAKE_EXTRA_TARGETS += Deployment_qtlib Deployment_third_lib Deployment_third_bin

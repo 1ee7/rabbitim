@@ -155,6 +155,7 @@ else #qmake编译
    # if [ "${RABBITIM_BUILD_STATIC}" = "static" ]; then
    #     PARA="$PARA CONFIG+=static"
    # fi
+    echo "qmake ...."
     $QMAKE ../RabbitIm.pro  $PARA "CONFIG+=release" \ PREFIX=`pwd`/install \
            INCLUDEPATH+=${RABBITIM_BUILD_PREFIX}/include \
            LIBS+=-L${RABBITIM_BUILD_PREFIX}/lib \
@@ -162,11 +163,13 @@ else #qmake编译
            RABBITIM_USE_FFMPEG=1 \
            RABBITIM_USE_LIBCURL=1 \
            RABBITIM_USE_OPENSSL=1
+    echo "$MAKE ...."
     if [ "$1" == "android" ]; then
         $MAKE -f Makefile install INSTALL_ROOT="`pwd`/android-build"
         ${QT_BIN}/androiddeployqt --input "`pwd`/android-libRabbitImApp.so-deployment-settings.json" --output "`pwd`/android-build" --verbose
     else
         $MAKE -f Makefile
+        echo "$MAKE install ...."
         $MAKE install
     fi
 fi

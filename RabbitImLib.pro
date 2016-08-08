@@ -71,7 +71,7 @@ win32:equals(QMAKE_HOST.os, Windows){
     #}
     #安装qt依赖库  
     Deployment_qtlib.target = Deployment_qtlib
-    Deployment_qtlib.path = $${PREFIX}
+    Deployment_qtlib.path = $$system_path($${PREFIX})
     Deployment_qtlib.commands = "$$[QT_INSTALL_BINS]/windeployqt" \
                     --compiler-runtime \
                     --verbose 7 \
